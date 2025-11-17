@@ -23,14 +23,14 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
+/* a {
   font-weight: 500;
   color: #646cff;
   text-decoration: inherit;
 }
 a:hover {
   color: #535bf2;
-}
+} */
 
 body {
   margin: 0;
@@ -61,4 +61,38 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar yang elegant */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(15, 157, 88, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #064e3b, #0f9d58);
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #0f9d58, #064e3b);
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #0f9d58 rgba(15, 157, 88, 0.05);
+}
+
+/* Smooth transitions untuk semua elemen */
+* {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }

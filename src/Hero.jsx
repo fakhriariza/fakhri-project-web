@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Rocket, Zap, ArrowRight, Sparkles } from "lucide-react";
 import RotateBanner from "./RotateBanner";
+import { ScrollContext } from "./App";
 
 export default function Hero() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -17,6 +18,8 @@ export default function Hero() {
   const scrollToSection = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
+
+  const { scrollToElement } = useContext(ScrollContext);
 
   return (
     <div className="relative z-10 max-w-7xl mx-auto px-6 min-h-screen flex flex-col items-center justify-center pb-32 overflow-hidden">
@@ -81,7 +84,7 @@ export default function Hero() {
             style={{ transitionDelay: "1000ms" }}
           >
             <button
-              onClick={() => scrollToSection("layanan")}
+              onClick={() => scrollToElement("layanan")}
               className="font-epilogue group px-8 py-4 bg-gradient-to-r text-xl md:text-xl lg:text-xl from-[#064E3B] to-[#0F9D58] rounded-full text-white font-semibold hover:shadow-2xl hover:shadow-green-500/50 transition-all duration-300 hover:scale-105 flex items-center gap-2 cursor-pointer"
             >
               Lihat Layanan

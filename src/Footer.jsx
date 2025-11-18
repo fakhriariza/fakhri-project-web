@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Rocket,
   Mail,
@@ -10,10 +10,14 @@ import {
   Twitter,
 } from "lucide-react";
 
+import { ScrollContext } from "./App";
+
 export default function Footer() {
   const scrollToSection = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
+
+  const { scrollToElement } = useContext(ScrollContext);
 
   const navigation = [
     { name: "Layanan", href: "layanan" },
@@ -96,7 +100,7 @@ export default function Footer() {
                   <a
                     className="text-white/80 hover:text-white  font-manrope transition-colors flex items-center gap-2 group cursor-pointer"
                     onClick={() => {
-                      scrollToSection(item.href);
+                      scrollToElement(item.href);
                     }}
                   >
                     <span className="w-0 h-0.5 bg-white group-hover:w-4 transition-all duration-300"></span>
@@ -115,7 +119,7 @@ export default function Footer() {
                 <li key={index}>
                   <a
                     onClick={() => {
-                      scrollToSection("harga");
+                      scrollToElement("harga");
                     }}
                     className="text-white/80 font-manrope hover:text-white transition-colors flex items-center gap-2 group cursor-pointer"
                   >

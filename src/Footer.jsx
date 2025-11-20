@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import arizaLogo from "./assets/ariza_logo_white.png";
+import arizaLogo from "./assets/ariza_logo_white_fix.png";
 import {
   Rocket,
   Mail,

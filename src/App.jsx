@@ -47,7 +47,7 @@ export default function App() {
 
       // Deteksi device dan set smoothness factor
       const isMobile = window.innerWidth < 768;
-      const delta = diff * (isMobile ? 0.2 : 0.1); // Mobile lebih cepat
+      const delta = diff * (isMobile ? 0.3 : 0.1); // Mobile lebih cepat
 
       if (Math.abs(diff) > 0.5) {
         const newScrollY = scrollY + delta;

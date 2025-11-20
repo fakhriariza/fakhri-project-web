@@ -17,6 +17,7 @@ export default function App() {
   const scrollContainerRef = useRef(null);
   const [scrollY, setScrollY] = useState(0);
   const [targetScrollY, setTargetScrollY] = useState(0);
+  const isMobile = window.innerWidth < 768;
 
   // Function to scroll to specific element
   const scrollToElement = (elementId) => {
@@ -43,7 +44,10 @@ export default function App() {
     // Smooth scroll animation
     const smoothScroll = () => {
       const diff = targetScrollY - scrollY;
-      const delta = diff * 0.1; // Smoothness factor (lower = smoother)
+
+      // Deteksi device dan set smoothness factor
+      const isMobile = window.innerWidth < 768;
+      const delta = diff * (isMobile ? 0.2 : 0.1); // Mobile lebih cepat
 
       if (Math.abs(diff) > 0.5) {
         const newScrollY = scrollY + delta;

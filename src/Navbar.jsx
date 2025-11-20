@@ -11,7 +11,7 @@ export default function Navbar() {
       {/* Left Logo */}
       <div className="flex items-center gap-2">
         <Rocket className="w-8 h-8 text-green-600" />
-        <span className="font-epilogue text-xl font-bold text-gray-900">
+        <span className="font-epilogue text-xl lmd:text-2xl lg:text-3xl font-bold text-gray-900">
           Ariza Studio
         </span>
       </div>

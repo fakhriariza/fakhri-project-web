@@ -8,12 +8,12 @@ export default function Faq() {
     {
       question: "Berapa lama waktu yang dibutuhkan untuk membuat website?",
       answer:
-        "Waktu pengerjaan bervariasi tergantung paket yang dipilih. Landing Page Starter membutuhkan 1 minggu, Pro 2 minggu, dan Premium 3-4 minggu. Untuk Company Profile dan E-commerce, waktu pengerjaan bisa 2-10 minggu tergantung kompleksitas fitur yang diinginkan.",
+        "Estimasi waktu pengerjaan tergantung berdasarkan paket yang dipilih dan tingkat kerumitan. Namun tenang, segala hal mengenai transparansi pengerjaan akan dibahas ketika tahap planning. Ariza Studio akan memberikan timeline pengerjaan yang akan menjadi komitmen bersama.",
     },
     {
       question: "Apakah saya bisa request desain sesuai keinginan?",
       answer:
-        "Tentu saja! Kami tidak menggunakan template. Semua desain dibuat custom sesuai dengan karakteristik brand dan keinginan Anda. Kami akan berdiskusi mendalam di tahap Planning untuk memastikan website mencerminkan identitas bisnis Anda.",
+        "Tentu saja! Kami tidak menggunakan template. Semua desain dibuat custom sesuai dengan karakteristik brand dan keinginan Anda. Kami akan berdiskusi mendalam di tahap Planning untuk memastikan website mencerminkan identitas Anda dan bisnis Anda.",
     },
     {
       question: "Apa saja yang termasuk dalam paket harga?",
@@ -28,13 +28,13 @@ export default function Faq() {
     {
       question: "Bagaimana sistem pembayarannya?",
       answer:
-        "Sistem pembayaran bisa dilakukan secara bertahap. Biasanya DP 50% di awal project, dan pelunasan 50% sebelum deployment. Kami menerima pembayaran melalui transfer bank atau e-wallet.",
+        "Sistem pembayaran bisa dilakukan secara bertahap. DP 50% di awal project, dan pelunasan 50% sebelum deployment. Kami menerima pembayaran melalui transfer bank atau e-wallet.",
     },
     {
       question:
         "Apakah saya bisa update konten website sendiri setelah selesai?",
       answer:
-        "Untuk paket yang include CMS (Content Management System), Anda bisa update konten sendiri dengan mudah. Kami akan memberikan training cara menggunakan dashboard admin. Untuk paket yang tidak include CMS, Anda bisa request update melalui kami.",
+        "Tergantung dengan paket yang anda pilih, ada website statis dan dinamis. Untuk dapat update konten website sendiri anda perlu memesan paket website dinamis. Namun, walaupun statis anda tetap dapat meminta perubahan konten selama masih dalam tahap revisi. ",
     },
     {
       question: "Apa yang terjadi setelah website selesai?",

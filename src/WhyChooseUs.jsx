@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Sparkles, Palette, Wrench, DollarSign } from "lucide-react";
+import { Sparkles, Palette, Wrench, DollarSign, CircleX } from "lucide-react";
 
 export default function WhyChooseUs() {
   const [isVisible, setIsVisible] = useState(false);
@@ -39,26 +39,28 @@ export default function WhyChooseUs() {
         "Full custom website/app sesuai keinginanmu",
         "Cepat dan berpengalaman",
         "Bebas revisi apa saja",
-        "Pengurusan domain dan email premium",
-        "Harga terjangkau, satu kali pembayaran",
+        "domain dan email premium diurus oleh Ariza Studio",
+        "Harga terjangkau, satu kali pembayaran bukan perbulan",
       ],
     },
     {
-      title: "Jasa buat website lain",
-      icon: Wrench,
+      title: "Tempat Jasa Buat Website Lain",
+      icon: CircleX,
       points: [
         "Website hanya mengikuti template yang ada",
-        "Harga tambahan jika ingin fitur lainnya seperti email",
+        "Harga tambahan jika ingin fitur lainnya seperti email, kalender, book meeting",
         "Revisi terbatas karena hanya mengukuti template",
+        "Banyak biaya tambahan yang tidak kamu pahami",
       ],
     },
     {
       title: "Website Builder",
-      icon: DollarSign,
+      icon: CircleX,
       points: [
-        "Website terbatas, UI website hanya sesuai template",
-        "Harga tambahan jika ingin fitur lainnya seperti email",
-        "Mengganti domain harus upgrade ke premium",
+        "Website terbatas, UI website hanya mengikuti sesuai template",
+        "Domain dan segala isi website harus diurus sendiri",
+        "Pembayaran setiap bulan, butuh biaya tambahan untuk upgrade fitur",
+        "Tidak bebas menentukan fitur karena harus mengikuti tema atau template",
       ],
     },
   ];

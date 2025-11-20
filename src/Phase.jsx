@@ -15,28 +15,40 @@ export default function Phase() {
       title: "Planning",
       subtitle: "Brainstorm & Design Plan",
       icon: Lightbulb,
-      items: ["Brainstorm ideas", "Set a target/deadline", "Plan tech stack"],
+      items: [
+        "Menentukan rencana pembuatan",
+        "Menetapkan target selesai",
+        "Brainstorm mengenai konsep dan UI/UX website",
+      ],
     },
     {
       number: "2",
       title: "Development",
       subtitle: "Build the Features",
       icon: Code,
-      items: ["Landing page", "Building core feature", "Integrate backend"],
+      items: [
+        "Pengembangan Website/App",
+        "Slicing UI/UX",
+        "Input data/integrasi backend",
+      ],
     },
     {
       number: "3",
       title: "Feedback",
       subtitle: "Revision & Security Check",
       icon: MessageSquare,
-      items: ["Feedback", "Revisions", "Security check"],
+      items: [
+        "Demo Website/App",
+        "Revisi Fitur & Desain",
+        "SEO & Security Check",
+      ],
     },
     {
       number: "4",
       title: "Deployment",
       subtitle: "Release & Launch",
       icon: Rocket,
-      items: ["Deployment", "Teach you to manage", "Maintenance"],
+      items: ["Deployment", "Tutorial Penggunaan", "Maintenance"],
     },
   ];
 

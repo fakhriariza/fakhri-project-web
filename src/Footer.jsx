@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import arizaLogo from "./assets/ariza_logo_white.png";
 import {
   Rocket,
   Mail,
@@ -67,10 +68,7 @@ export default function Footer() {
           {/* Brand Column */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-2 mb-4">
-              <Rocket className="w-8 h-8 text-white" />
-              <span className="font-epilogue text-3xl font-bold">
-                Ariza Studio
-              </span>
+              <img src={arizaLogo} className="w-32"></img>
             </div>
             <p className="text-white/80 font-manrope leading-relaxed mb-6">
               Kami membantu bisnis Anda tumbuh dengan website yang profesional,

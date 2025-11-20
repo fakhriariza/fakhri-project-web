@@ -37,7 +37,7 @@ export default function Hero() {
         </div>
 
         {/* Main Heading - First Line */}
-        <h1 className="font-epilogue text-5xl md:text-7xl lg:text-7xl font-bold text-gray-900 mb-2 leading-tight">
+        <h1 className="font-epilogue text-4xl md:text-7xl lg:text-7xl font-bold text-gray-900 mb-2 leading-tight">
           <span
             className={`block transition-all duration-1000 ease-out ${
               isLoaded

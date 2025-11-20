@@ -9,6 +9,7 @@ import LandingPackages from "./LandingPackages";
 import Phase from "./Phase";
 import Faq from "./Faq";
 import Footer from "./Footer";
+import Portfolio from "./Portofolio";
 
 // Create context for scroll control
 export const ScrollContext = createContext();
@@ -145,6 +146,8 @@ export default function App() {
             <LandingPackages />
             <Phase />
             <Faq />
+
+            {/* <Portfolio /> */}
             <Footer />
           </div>
         </div>

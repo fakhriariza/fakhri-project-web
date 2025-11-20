@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Rocket, Menu, X } from "lucide-react";
 import { ScrollContext } from "./App";
+import arizaLogo from "./assets/ariza_logo.png";
 
 export default function Navbar() {
   const { scrollToElement } = useContext(ScrollContext);
@@ -10,10 +11,11 @@ export default function Navbar() {
     <nav className="sticky top-0 z-50 px-6 py-6 flex items-center justify-between max-w-7xl mx-auto bg-transparent backdrop-blur-md border-b border-green-500/10">
       {/* Left Logo */}
       <div className="flex items-center gap-2">
-        <Rocket className="w-8 h-8 text-green-600" />
+        <img src={arizaLogo} className="w-32"></img>
+        {/* <Rocket className="w-8 h-8 text-green-600" />
         <span className="font-epilogue text-xl lmd:text-2xl lg:text-3xl font-bold text-gray-900">
           Ariza Studio
-        </span>
+        </span> */}
       </div>
 
       {/* Desktop Menu */}

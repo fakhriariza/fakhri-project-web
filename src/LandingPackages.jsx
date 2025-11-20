@@ -15,10 +15,12 @@ export default function PricingTabs() {
   const [activeTab, setActiveTab] = useState(0);
 
   const tabs = [
-    { name: "Landing Page", icon: Globe },
-    { name: "Company Profile", icon: Building2 },
-    { name: "E-Commerce", icon: ShoppingBag },
+    { name: "Landing Page & Company Profile", icon: Globe },
+    { name: "Company Profile + CMS", icon: Building2 },
+    { name: "Another Product", icon: ShoppingBag },
   ];
+
+  const tabNames = ["Landing Page", "Company Profile + CMS", "Produk Lainnya"];
 
   const landingPagePackages = [
     {
@@ -73,7 +75,7 @@ export default function PricingTabs() {
         "Galeri, slider, dan fitur interaktif untuk pengalaman pengunjung lebih baik",
         "Mobile friendly dan optimasi SEO lanjutan",
         "Gratis domain premium (.com, .net, .id, .co.id) & SSL Certificate 1 tahun",
-        "Gratis 3 email pribadi/perusahaan",
+        "Gratis 5 email pribadi/perusahaan",
         "Revisi desain tidak terbatas 3 bulan",
       ],
       duration: "3–4 minggu",
@@ -83,65 +85,65 @@ export default function PricingTabs() {
 
   const companyProfilePackages = [
     {
-      name: "Basic",
-      price: "Rp1.999.000",
+      name: "CMS Basic",
+      price: "Rp2.999.000",
       icon: Zap,
       tagline:
-        "Website company profile standar dengan informasi lengkap perusahaan",
+        "Website company profile dengan tambahan fitur artikel untuk menampilkan berita perusahaanmu",
       features: [
-        "5-7 halaman: Home, About, Services, Portfolio, Team, Contact",
+        "5 halaman: Home, About, Services, Blog, Team, Contact atau halaman apapun sesuai request",
         "Desain profesional mencerminkan identitas perusahaan",
+        "Website admin untuk update artikel/berita",
         "Galeri foto produk/layanan",
         "Form kontak dan info lokasi kantor",
         "Mobile responsive dan loading cepat",
         "Gratis domain premium (.com, .net, .id, .co.id) & SSL 1 tahun",
         "Gratis 5 email perusahaan",
-        "Revisi desain tidak terbatas 1 bulan",
+        "Revisi desain tidak terbatas 2 bulan",
         "SEO dasar untuk pencarian Google",
       ],
-      duration: "2-3 minggu",
+      duration: "3-4 minggu",
       highlighted: false,
     },
     {
-      name: "Professional",
-      price: "Rp3.499.000",
+      name: "CMS Pro",
+      price: "Rp3.999.000",
       icon: Rocket,
       tagline:
-        "Website company profile lengkap dengan fitur blog dan portfolio dinamis",
+        "Website company profile lengkap dengan fitur blog dan artikel dinamis",
       badge: "Paling Populer",
       features: [
-        "8-10 halaman custom sesuai kebutuhan bisnis",
+        "5-8 halaman custom sesuai kebutuhan bisnis",
         "Desain premium dan modern dengan animasi halus",
         "Blog/News section untuk update perusahaan",
+        "Website admin untuk update artikel dan berita (2 section untuk update data)",
         "Portfolio dinamis dengan kategori dan filter",
         "Testimoni pelanggan dan client logos",
         "Integrasi media sosial dan Google Maps",
-        "Form kontak advanced dengan auto-reply",
-        "Gratis domain premium & SSL 1 tahun",
-        "Gratis 10 email perusahaan",
-        "SEO advanced dan Google Analytics",
-        "Revisi tidak terbatas 2 bulan",
+        "Gratis domain premium (.com, .net, .id, .co.id) & SSL 1 tahun",
+        "Gratis 5 email perusahaan",
+        "SEO lanjutan",
+        "Revisi tidak terbatas 3 bulan",
       ],
       duration: "3-4 minggu",
       highlighted: true,
     },
     {
-      name: "Enterprise",
+      name: "CMS Super",
       price: "Rp5.999.000",
       icon: Crown,
       tagline:
-        "Solusi website perusahaan skala besar dengan fitur lengkap dan dashboard",
+        "Website company profile lengkap dengan semua fitur dan semua data dalam website dapat di update",
       features: [
         "Unlimited halaman sesuai struktur perusahaan",
         "Multi-language support (Indonesia & Inggris)",
-        "CMS Dashboard untuk update konten sendiri",
+        "CMS Dashboard untuk update konten sendiri termasuk tulisan seperti about, dan semua hal lain di website",
         "Advanced blog dengan kategori dan tag",
         "Member area untuk client/partner login",
-        "Video integration dan multimedia gallery",
         "Download center untuk dokumen perusahaan",
         "Career/Recruitment page dengan form aplikasi",
-        "Gratis domain premium & SSL 1 tahun",
-        "Gratis 20 email perusahaan",
+        "Gratis domain premium (.com, .net, .id, .co.id) & SSL 1 tahun",
+        "Gratis 5 email perusahaan",
         "SEO advanced dan reporting",
         "Revisi tidak terbatas 3 bulan",
         "Training penggunaan CMS",
@@ -153,77 +155,32 @@ export default function PricingTabs() {
 
   const ecommercePackages = [
     {
-      name: "Startup",
-      price: "Rp3.999.000",
+      name: "Website Sesuai Request",
+      price: "Let's Talk!",
       icon: Zap,
-      tagline: "Toko online sederhana untuk mulai jualan produk secara online",
+      tagline:
+        "Website apapun sesuai dengan request seperti LMS, CMS, dan web lainnya",
       features: [
-        "Katalog produk hingga 50 item",
-        "Kategori dan pencarian produk",
-        "Shopping cart dan checkout sederhana",
-        "Integrasi WhatsApp untuk order",
-        "Halaman: Home, Shop, Product Detail, About, Contact",
-        "Mobile friendly dan loading cepat",
-        "Gratis domain premium & SSL 1 tahun",
-        "Gratis 3 email bisnis",
-        "Dashboard admin sederhana",
-        "Revisi tidak terbatas 1 bulan",
+        "Bebas request apa saja",
+        "Website seperti LMS untuk sekolah/perusahaan",
+        "Website E-commerce seperti tokpedia, shopee, dan lainnya",
       ],
-      duration: "3-4 minggu",
+      duration: "4 minggu",
       highlighted: false,
     },
     {
-      name: "Business",
-      price: "Rp7.999.000",
+      name: "Android App",
+      price: "Let's Talk!",
       icon: Rocket,
       tagline: "E-commerce lengkap dengan payment gateway dan manajemen order",
       badge: "Paling Populer",
       features: [
-        "Unlimited produk dengan varian (warna, ukuran, dll)",
-        "Kategori bertingkat dan advanced search",
-        "Shopping cart dengan promo code",
-        "Payment gateway (Midtrans/Xendit)",
-        "Manajemen order dan status pengiriman",
-        "Customer account dan order history",
-        "Review dan rating produk",
-        "Dashboard admin lengkap dengan report",
-        "Integrasi ongkir otomatis (Raja Ongkir)",
-        "Gratis domain premium & SSL 1 tahun",
-        "Gratis 10 email bisnis",
-        "SEO untuk produk",
-        "Revisi tidak terbatas 2 bulan",
-        "Training penggunaan sistem",
+        "Bebas request aplikasi untuk apa saja",
+        "Dapat membuat aplikasi seperti HR Tools, sampai E-Commerce",
+        "Dibuat dengan tekonologi terbaru",
       ],
       duration: "5-6 minggu",
       highlighted: true,
-    },
-    {
-      name: "Enterprise",
-      price: "Rp14.999.000",
-      icon: Crown,
-      tagline:
-        "Platform e-commerce skala besar dengan fitur marketplace dan multi-vendor",
-      features: [
-        "Multi-vendor/marketplace support",
-        "Unlimited produk dengan sistem inventory",
-        "Multiple payment gateway",
-        "Multiple shipping methods",
-        "Customer loyalty program & membership",
-        "Advanced reporting dan analytics",
-        "Email marketing integration",
-        "Live chat support integration",
-        "Mobile app ready (PWA)",
-        "Multi-currency dan multi-language",
-        "Wishlist dan product comparison",
-        "Flash sale dan promo management",
-        "Gratis domain premium & SSL 1 tahun",
-        "Gratis 20 email bisnis",
-        "Priority support 3 bulan",
-        "Revisi tidak terbatas 3 bulan",
-        "Training lengkap dan dokumentasi",
-      ],
-      duration: "8-10 minggu",
-      highlighted: false,
     },
   ];
 
@@ -232,6 +189,14 @@ export default function PricingTabs() {
     companyProfilePackages,
     ecommercePackages,
   ];
+
+  const handleWhatsApp = (packageName) => {
+    const phoneNumber = "6285156436280";
+    const message = `Halo! Saya ingin tanya mengenai Paket ${packageName} di Ariza Studio`;
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    window.open(whatsappUrl, "_blank");
+  };
 
   return (
     <div id="harga" className="min-h-screen bg-transparant">
@@ -353,6 +318,16 @@ export default function PricingTabs() {
                     Waktu pengerjaan: {pkg.duration}
                   </span>
                 </div>
+                <button
+                  onClick={() => handleWhatsApp(pkg.name)}
+                  className={`w-full py-3 px-4 rounded-lg font-semibold font-manrope flex items-center justify-center gap-2 transition-all duration-300 mt-5 cursor-pointer ${
+                    pkg.highlighted
+                      ? "bg-gradient-to-r from-[#0F9D58] to-[#064E3B] text-white hover:shadow-lg hover:shadow-[#0F9D58]/40"
+                      : "bg-gray-200 text-gray-900 hover:bg-gray-300"
+                  }`}
+                >
+                  Pesan via WhatsApp
+                </button>
               </div>
             </div>
           ))}

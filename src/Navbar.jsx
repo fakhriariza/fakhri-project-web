@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Rocket, Menu, X } from "lucide-react";
 import { ScrollContext } from "./App";
-import arizaLogo from "./assets/ariza_logo.png";
+import arizaLogo from "./assets/logofix.svg";
 
 export default function Navbar() {
   const { scrollToElement } = useContext(ScrollContext);

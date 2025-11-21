@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   Zap,
   Rocket,
@@ -13,6 +13,29 @@ import {
 
 export default function PricingTabs() {
   const [activeTab, setActiveTab] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
 
   const tabs = [
     { name: "Landing Page & Company Profile", icon: Globe },
@@ -192,7 +215,7 @@ export default function PricingTabs() {
 
   const handleWhatsApp = (packageName) => {
     const phoneNumber = "6285156436280";
-    const message = `Halo! Saya ingin tanya mengenai Paket ${packageName} di Ariza Studio`;
+    const message = `Halo! Saya ingin tanya mengenai Paket ${packageName} di Ariza Labs`;
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
     window.open(whatsappUrl, "_blank");
@@ -219,15 +242,13 @@ export default function PricingTabs() {
               onClick={() => setActiveTab(index)}
               className={`group flex items-center gap-3 px-6 py-3 rounded-xl font-semibold font-epilogue transition-all duration-300 ${
                 activeTab === index
-                  ? "bg-gradient-to-r from-[#0F9D58] to-[#064E3B] text-white shadow-lg scale-105"
+                  ? "bg-gradient-to-r from-[#0F9D58] to-[#064E3B] text-white shadow-lg"
                   : "bg-white text-gray-700 hover:bg-gray-100 border border-gray-200"
               }`}
             >
               <tab.icon className="w-5 h-5" />
               <span>{tab.name}</span>
-              {activeTab === index && (
-                <ChevronRight className="w-4 h-4 animate-pulse" />
-              )}
+              {activeTab === index && <ChevronRight className="w-4 h-4" />}
             </button>
           ))}
         </div>
@@ -237,17 +258,17 @@ export default function PricingTabs() {
           {allPackages[activeTab].map((pkg, index) => (
             <div
               key={index}
-              className={`group relative backdrop-blur-sm border rounded-3xl p-8 transition-all duration-300 hover:scale-105 cursor-pointer flex flex-col ${
+              className={`group relative backdrop-blur-sm border rounded-3xl p-8 transition-all duration-500 hover:scale-102 cursor-pointer flex flex-col ${
                 pkg.highlighted
-                  ? "bg-gradient-to-br from-[#0F9D58]/20 via-[#0F9D58]/10 to-[#064E3B]/20 border-[#0F9D58] hover:shadow-2xl hover:shadow-[#0F9D58]/30 hover:from-[#0F9D58]/30 hover:to-[#064E3B]/30"
-                  : "bg-white/5 border-white/20 hover:border-gray-400/50 hover:shadow-xl hover:bg-white/10"
+                  ? "bg-gradient-to-br from-[#0F9D58]/20 via-[#0F9D58]/10 to-[#064E3B]/20 border-[#0F9D58] hover:shadow-lg hover:shadow-[#0F9D58]/20 hover:from-[#0F9D58]/25 hover:to-[#064E3B]/25"
+                  : "bg-white/5 border-white/20 hover:border-gray-300/50 hover:shadow-md hover:bg-white/8"
               }`}
             >
               {/* Badge */}
               {pkg.highlighted && (
                 <>
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#0F9D58]/5 via-transparent to-[#064E3B]/5 group-hover:from-[#0F9D58]/15 group-hover:to-[#064E3B]/15 transition-all duration-300 rounded-3xl"></div>
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1.5 bg-gradient-to-r from-[#0F9D58] to-[#064E3B] text-white text-sm font-semibold rounded-full shadow-lg">
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#0F9D58]/5 via-transparent to-[#064E3B]/5 group-hover:from-[#0F9D58]/10 group-hover:to-[#064E3B]/10 transition-all duration-300 rounded-3xl"></div>
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1.5 bg-gradient-to-r from-[#0F9D58] to-[#064E3B] text-white text-sm font-semibold rounded-full shadow-lg animate-pulse">
                     {pkg.badge}
                   </div>
                 </>
@@ -256,9 +277,9 @@ export default function PricingTabs() {
               <div className="relative z-10 flex flex-col h-full">
                 {/* Icon */}
                 <div
-                  className={`mb-6 w-14 h-14 rounded-xl flex items-center justify-center transition-transform group-hover:scale-110 ${
+                  className={`mb-6 w-14 h-14 rounded-xl flex items-center justify-center transition-all duration-500 ${
                     pkg.highlighted
-                      ? "bg-gradient-to-r from-[#0F9D58] to-[#064E3B]"
+                      ? "bg-gradient-to-r from-[#0F9D58] to-[#064E3B] group-hover:scale-105"
                       : "bg-gray-600"
                   }`}
                 >
@@ -273,7 +294,7 @@ export default function PricingTabs() {
                 {/* Price */}
                 <div className="mb-2">
                   <span
-                    className={`text-4xl font-bold font-epilogue ${
+                    className={`text-4xl font-bold font-epilogue transition-colors duration-300 ${
                       pkg.highlighted ? "text-[#0F9D58]" : "text-gray-900"
                     }`}
                   >
@@ -291,10 +312,11 @@ export default function PricingTabs() {
                   {pkg.features.map((feature, featureIndex) => (
                     <li
                       key={featureIndex}
-                      className="text-sm font-manrope text-gray-800 leading-relaxed flex items-start gap-2"
+                      className="text-sm font-manrope text-gray-800 leading-relaxed flex items-start gap-2 opacity-0 animate-[fadeInUp_0.5s_ease-out_forwards]"
+                      style={{ animationDelay: `${featureIndex * 30}ms` }}
                     >
                       <Check
-                        className={`w-5 h-5 flex-shrink-0 mt-0.5 ${
+                        className={`w-5 h-5 flex-shrink-0 mt-0.5 transition-colors duration-300 ${
                           pkg.highlighted ? "text-[#0F9D58]" : "text-gray-600"
                         }`}
                       />
@@ -305,12 +327,12 @@ export default function PricingTabs() {
 
                 {/* Duration */}
                 <div
-                  className={`flex items-center gap-2 pt-6 border-t ${
+                  className={`flex items-center gap-2 pt-6 border-t transition-colors duration-300 ${
                     pkg.highlighted ? "border-[#0F9D58]/30" : "border-gray-300"
                   }`}
                 >
                   <Clock
-                    className={`w-5 h-5 ${
+                    className={`w-5 h-5 transition-colors duration-300 ${
                       pkg.highlighted ? "text-[#0F9D58]" : "text-gray-600"
                     }`}
                   />
@@ -322,7 +344,7 @@ export default function PricingTabs() {
                   onClick={() => handleWhatsApp(pkg.name)}
                   className={`w-full py-3 px-4 rounded-lg font-semibold font-manrope flex items-center justify-center gap-2 transition-all duration-300 mt-5 cursor-pointer ${
                     pkg.highlighted
-                      ? "bg-gradient-to-r from-[#0F9D58] to-[#064E3B] text-white hover:shadow-lg hover:shadow-[#0F9D58]/40"
+                      ? "bg-gradient-to-r from-[#0F9D58] to-[#064E3B] text-white hover:shadow-md hover:shadow-[#0F9D58]/30"
                       : "bg-gray-200 text-gray-900 hover:bg-gray-300"
                   }`}
                 >
@@ -342,6 +364,19 @@ export default function PricingTabs() {
           </p>
         </div>
       </div>
+
+      <style>{`
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(8px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
     </div>
   );
 }

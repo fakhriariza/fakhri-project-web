@@ -8,7 +8,7 @@ export default function Faq() {
     {
       question: "Berapa lama waktu yang dibutuhkan untuk membuat website?",
       answer:
-        "Estimasi waktu pengerjaan tergantung berdasarkan paket yang dipilih dan tingkat kerumitan. Namun tenang, segala hal mengenai transparansi pengerjaan akan dibahas ketika tahap planning. Ariza Studio akan memberikan timeline pengerjaan yang akan menjadi komitmen bersama.",
+        "Estimasi waktu pengerjaan tergantung berdasarkan paket yang dipilih dan tingkat kerumitan. Namun tenang, segala hal mengenai transparansi pengerjaan akan dibahas ketika tahap planning. Ariza Labs akan memberikan timeline pengerjaan yang akan menjadi komitmen bersama.",
     },
     {
       question: "Apakah saya bisa request desain sesuai keinginan?",

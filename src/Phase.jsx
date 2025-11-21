@@ -66,7 +66,7 @@ export default function Phase() {
             Proses Kerja
           </h2>
           <p className="font-manrope text-lg text-gray-600 max-w-2xl mx-auto">
-            Alur proses pengerjaan website/aplikasi di Ariza Studio
+            Alur proses pengerjaan website/aplikasi di Ariza Labs
           </p>
         </div>
 

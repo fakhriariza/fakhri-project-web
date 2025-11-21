@@ -37,8 +37,8 @@ export default function Footer() {
   const contact = [
     {
       icon: Mail,
-      text: "hello@arizastudio.com",
-      href: "mailto:hello@arizastudio.com",
+      text: "hello@arizalabs.com",
+      href: "mailto:hello@arizalabs.com",
     },
     { icon: Phone, text: "+62 851-5643-6280", href: "tel:+6285156436280" },
     { icon: MapPin, text: "Bekasi, Indonesia", href: "#" },
@@ -154,7 +154,7 @@ export default function Footer() {
         {/* Bottom Section */}
         <div className="font-manrope flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-white/70 text-sm">
-            © {new Date().getFullYear()} Ariza Studio. All rights reserved.
+            © {new Date().getFullYear()} Ariza Labs. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm">
             <a

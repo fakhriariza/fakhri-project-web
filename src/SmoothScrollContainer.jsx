@@ -1,49 +1,23 @@
-import { useState, useEffect, useRef, createContext } from "react";
-import { Routes, Route } from "react-router-dom";
-import "./index.css";
-import Hero from "./Hero";
-import ServicesSection from "./ServiceSection";
-import BackgroundEffects from "./BackgroundEffects";
-import Navbar from "./Navbar";
-import WhyChooseUs from "./WhyChooseUs";
-import LandingPackages from "./LandingPackages";
-import Phase from "./Phase";
-import Faq from "./Faq";
-import Footer from "./Footer";
-import Portofolio from "./Portofolio";
+import { useState, useEffect, useRef } from "react";
+import { ScrollContext } from "./App";
 
-// Create context for scroll control
-export const ScrollContext = createContext();
-
-function HomePage({ contextRef }) {
+export default function SmoothScrollContainer({ children }) {
   const scrollContainerRef = useRef(null);
   const [scrollY, setScrollY] = useState(0);
   const [targetScrollY, setTargetScrollY] = useState(0);
-  const layananRef = useRef(null);
-  const hargaRef = useRef(null);
-  const kontakRef = useRef(null);
 
-  // Function to scroll to specific element
   const scrollToElement = (elementId) => {
     const element = document.getElementById(elementId);
     if (element && scrollContainerRef.current) {
       const elementTop = element.offsetTop;
-      const navbarHeight = 80;
+      const navbarHeight = 96; // Adjust based on your navbar height
       const targetPosition = elementTop - navbarHeight;
       const maxScroll =
         scrollContainerRef.current.scrollHeight - window.innerHeight;
       const newTarget = Math.max(0, Math.min(targetPosition, maxScroll));
-
       setTargetScrollY(newTarget);
     }
   };
-
-  // Update context ref with scrollToElement function
-  useEffect(() => {
-    if (contextRef) {
-      contextRef.current = { scrollToElement };
-    }
-  }, []);
 
   useEffect(() => {
     let animationFrameId;
@@ -124,71 +98,48 @@ function HomePage({ contextRef }) {
   }, [targetScrollY]);
 
   return (
-    <div className="fixed inset-0 overflow-hidden">
-      <div
-        ref={scrollContainerRef}
-        className="will-change-transform pt-24"
-        style={{
-          transition: "none",
-          backfaceVisibility: "hidden",
-          perspective: 1000,
-        }}
-      >
-        <div className="w-screen min-h-screen relative">
-          <BackgroundEffects />
-          <Hero />
-          <ServicesSection ref={layananRef} id="layanan" />
-          <WhyChooseUs />
-          <LandingPackages ref={hargaRef} id="harga" />
-          <Phase ref={kontakRef} id="kontak" />
-          <Faq />
-          <Footer />
+    <ScrollContext.Provider value={{ scrollToElement }}>
+      <div className="fixed inset-0 overflow-hidden">
+        {/* Scroll Container */}
+        <div
+          ref={scrollContainerRef}
+          className="will-change-transform"
+          style={{
+            transition: "none",
+            backfaceVisibility: "hidden",
+            perspective: 1000,
+          }}
+        >
+          {children}
+        </div>
+
+        {/* Custom Scrollbar */}
+        <div className="fixed right-2 top-1/2 -translate-y-1/2 w-1 h-64 bg-gray-200/20 rounded-full overflow-hidden z-50">
+          <div
+            className="w-full bg-gradient-to-b from-[#064E3B] to-[#0F9D58] rounded-full transition-all duration-300"
+            style={{
+              height: `${Math.min(
+                100,
+                (window.innerHeight /
+                  (scrollContainerRef.current?.scrollHeight ||
+                    window.innerHeight)) *
+                  100
+              )}%`,
+              transform: `translateY(${
+                (scrollY /
+                  ((scrollContainerRef.current?.scrollHeight ||
+                    window.innerHeight) -
+                    window.innerHeight)) *
+                (256 -
+                  256 *
+                    (window.innerHeight /
+                      (scrollContainerRef.current?.scrollHeight ||
+                        window.innerHeight)))
+              }px)`,
+            }}
+          />
         </div>
       </div>
-
-      {/* Custom Scrollbar */}
-      <div className="fixed right-2 top-1/2 -translate-y-1/2 w-1 h-64 bg-gray-200/20 rounded-full overflow-hidden z-50">
-        <div
-          className="w-full bg-gradient-to-b from-[#064E3B] to-[#0F9D58] rounded-full transition-all duration-300"
-          style={{
-            height: `${Math.min(
-              100,
-              (window.innerHeight /
-                (scrollContainerRef.current?.scrollHeight ||
-                  window.innerHeight)) *
-                100
-            )}%`,
-            transform: `translateY(${
-              (scrollY /
-                ((scrollContainerRef.current?.scrollHeight ||
-                  window.innerHeight) -
-                  window.innerHeight)) *
-              (256 -
-                256 *
-                  (window.innerHeight /
-                    (scrollContainerRef.current?.scrollHeight ||
-                      window.innerHeight)))
-            }px)`,
-          }}
-        />
-      </div>
-    </div>
-  );
-}
-
-export default function App() {
-  const scrollContextRef = useRef(null);
-
-  return (
-    <ScrollContext.Provider value={scrollContextRef}>
-      <div className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md">
-        <Navbar />
-      </div>
-
-      <Routes>
-        <Route path="/" element={<HomePage contextRef={scrollContextRef} />} />
-        <Route path="/portofolio" element={<Portofolio />} />
-      </Routes>
     </ScrollContext.Provider>
   );
 }

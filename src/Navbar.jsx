@@ -1,40 +1,63 @@
 import React, { useContext, useState } from "react";
-import { Rocket, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { ScrollContext } from "./App";
+import { useNavigate, useLocation } from "react-router-dom";
 import arizaLogo from "./assets/logofix.svg";
 
 export default function Navbar() {
-  const { scrollToElement } = useContext(ScrollContext);
+  const contextRef = useContext(ScrollContext);
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleScroll = (elementId) => {
+    if (location.pathname !== "/") {
+      // Not on homepage, navigate to home first
+      navigate("/");
+      // Wait for navigation to complete, then scroll
+      setTimeout(() => {
+        if (contextRef?.current?.scrollToElement) {
+          contextRef.current.scrollToElement(elementId);
+        }
+      }, 100);
+    } else {
+      // Already on homepage, just scroll
+      if (contextRef?.current?.scrollToElement) {
+        contextRef.current.scrollToElement(elementId);
+      }
+    }
+  };
 
   return (
     <nav className="sticky top-0 z-50 px-6 py-6 flex items-center justify-between max-w-7xl mx-auto bg-transparent backdrop-blur-md border-b border-green-500/10">
       {/* Left Logo */}
-      <div className="flex items-center gap-2">
-        <img src={arizaLogo} className="w-32"></img>
-        {/* <Rocket className="w-8 h-8 text-green-600" />
-        <span className="font-epilogue text-xl lmd:text-2xl lg:text-3xl font-bold text-gray-900">
-          Ariza Studio
-        </span> */}
+      <div
+        className="flex items-center gap-2 cursor-pointer"
+        onClick={() => navigate("/")}
+      >
+        <img src={arizaLogo} className="w-32" alt="Ariza Logo" />
       </div>
 
       {/* Desktop Menu */}
       <div className="hidden md:flex items-center gap-8 font-manrope">
         <a
           className="text-gray-600 hover:text-gray-900 transition cursor-pointer"
-          onClick={() => scrollToElement("layanan")}
+          onClick={() => handleScroll("layanan")}
         >
           Layanan
         </a>
 
         <a
           className="text-gray-600 hover:text-gray-900 transition cursor-pointer"
-          onClick={() => scrollToElement("harga")}
+          onClick={() => handleScroll("harga")}
         >
           Harga
         </a>
 
-        <a className="text-gray-600 hover:text-gray-900 transition cursor-pointer">
+        <a
+          className="text-gray-600 hover:text-gray-900 transition cursor-pointer"
+          onClick={() => navigate("/portofolio")}
+        >
           Portofolio
         </a>
 
@@ -43,7 +66,7 @@ export default function Navbar() {
         </a>
 
         <button
-          onClick={() => scrollToElement("kontak")}
+          onClick={() => handleScroll("kontak")}
           className="font-bold px-5 py-2 bg-green-500/10 backdrop-blur-sm border border-green-500/30 rounded-full text-gray-900 hover:bg-green-500/20 transition cursor-pointer"
         >
           Kontak
@@ -65,7 +88,7 @@ export default function Navbar() {
           <a
             className="cursor-pointer"
             onClick={() => {
-              scrollToElement("layanan");
+              handleScroll("layanan");
               setOpen(false);
             }}
           >
@@ -75,19 +98,28 @@ export default function Navbar() {
           <a
             className="cursor-pointer"
             onClick={() => {
-              scrollToElement("harga");
+              handleScroll("harga");
               setOpen(false);
             }}
           >
             Harga
           </a>
 
-          <a className="cursor-pointer">Portofolio</a>
+          <a
+            className="cursor-pointer"
+            onClick={() => {
+              navigate("/portofolio");
+              setOpen(false);
+            }}
+          >
+            Portofolio
+          </a>
+
           <a className="cursor-pointer">Tentang</a>
 
           <button
             onClick={() => {
-              scrollToElement("kontak");
+              handleScroll("kontak");
               setOpen(false);
             }}
             className="font-bold px-5 py-2 bg-green-500/10 backdrop-blur-sm border border-green-500/30 rounded-full text-gray-900 hover:bg-green-500/20 transition cursor-pointer"
